@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <script src="https://kit.fontawesome.com/fbd464c484.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!---------------playlist---------------->
+    <div class="playlist-container">
+        <div class="playlist" id="playlist">
+            <div class="playlist-header">
+                <h2>Playlist</h2>
+                <button id="playlist-options" class="menu-btn">&#x22EE;</button>
+                <div id="playlist-menu" class="menu hidden">
+                    <button id="add-song">Add Song</button>
+                    <button id="delete-song">Delete Song</button>
+                </div>
+            </div>
+            <ul id="song-list">
+                <li data-src="Audios/Aakaasha Deepavu Neenu Duet.mp3" data-details="SPB and S.Janaki - Pavana Ganga" data-image="Images/default.jpg">Aakaasha Deepavu Neenu</li>
+                <li data-src="Audios/Aadoo Aata Aadoo.mp3" data-details="Chitra H.G - Chowka" data-image="Images/default.jpg">Aadoo Aata Aadoo</li>
+            </ul>
+        </div>
+
+        <!---------------main player---------------->
+        <div class="controls-container">
+            <div class="playlist-btn-section" id="playlist-btn-section">
+                <img id="playlist-toggle" src="Images/playlist.png" onclick="togglePlaylist()">
+            </div>
+            <script>
+                const playlist = document.getElementById("playlist");
+                function togglePlaylist() {
+                    if (playlist.style.display === "none" || playlist.style.display === "") {
+                        playlist.style.display = "block";
+                    } 
+                    else {
+                        playlist.style.display = "none";
+                     }
+                }
+            </script>
+            <h2 id="current-song">Select a song</h2>
+            <p id="current-song-details">Artist - Album</p>
+            <img id="current-song-image" src="Images/default.jpg" alt="Song Cover" class="song-cover">
+            <audio id="audio">
+                <source src="#" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <!---------------controls---------------->
+            <div class="controls">
+                <div class="player">
+                    <div class="time-display">
+                        <span id="start-time">0:00</span>  
+                        <input type="range" id="seek-bar" min="0" value="0">
+                        <span id="end-time">0:00</span>
+                    </div>
+                </div>
+                <div class="icons-section">
+                    <div class="icons">
+                        <i id="prev" class="fa-solid fa-backward-step "></i>
+                        <i id="play-pause" class="fa-solid fa-circle-play fa-bounce"></i>
+                        <i id="next" class="fa-solid fa-forward-step "></i>
+                    </div>
+                    
+                </div>
+                <div class="volume-bar">
+                    <button class="volume-btn" id="volume-icon"><i class="fa-solid fa-volume-high"></i></button>
+                    <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.1" value="1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Javascript.js"></script>
+</body>
+</html>
